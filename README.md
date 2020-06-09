@@ -68,6 +68,9 @@ GO
 ## 3. Viết các Stored procedure
 ### 3.1. Stored dùng để thêm mới dữ liệu (Insert) vào table SINHVIEN, trong đó thuộc tính MATKHAU được mã hóa (HASH) sử dụng MD5
 ```
+USE [QLSV]
+GO
+
 CREATE PROCEDURE [SP_INS_SINHVIEN]
 	@MSSV NVARCHAR(20),
 	@HOTEN NVARCHAR(100),
@@ -88,6 +91,9 @@ GO
 
 ### 3.2. Stored dùng để thêm mới dữ liệu (Insert) vào table NHANVIEN, trong đó thuộc tính MATKHAU được mã hóa (HASH) sử dụng SHA1 và thuộc tính LUONG sẽ được mã hóa sử dụng thuật toán AES 256, với khóa mã hóa là mã số của sinh viên thực hiện bài Lab này.
 ```
+USE [QLSV]
+GO
+
 CREATE SYMMETRIC KEY [SK_4301104032]
 WITH  
     ALGORITHM = AES_256,  
@@ -116,6 +122,24 @@ BEGIN
  
     CLOSE SYMMETRIC KEY [SK_4301104032];
 END 
+GO
+```
+
+## 3.3. Stored dùng để truy vấn dữ liệu nhân viên (NHANVIEN)
+```
+USE [QLSV]
+GO
+
+CREATE PROCEDURE [SP_SEL_NHANVIEN]
+AS
+BEGIN
+	OPEN SYMMETRIC KEY [SK_4301104032] DECRYPTION BY PASSWORD = 'K4301104032'	
+ 
+	SELECT [MANV], [HOTEN], [EMAIL], CONVERT(VARCHAR(MAX), DECRYPTBYKEY([LUONG])) AS [LUONGCB] 
+	FROM dbo.[NHANVIEN]
+ 
+	CLOSE SYMMETRIC KEY [SK_4301104032];
+END
 GO
 ```
 
