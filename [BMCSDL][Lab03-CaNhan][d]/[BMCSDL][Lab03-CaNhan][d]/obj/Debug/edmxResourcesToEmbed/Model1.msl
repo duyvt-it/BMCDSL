@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLSVModelStoreContainer" CdmEntityContainer="QLSVEntities">
-    <FunctionImportMapping FunctionImportName="SP_SEL_USER" FunctionName="QLSVModel.Store.SP_SEL_USER" />
-  </EntityContainerMapping>
-</Mapping>

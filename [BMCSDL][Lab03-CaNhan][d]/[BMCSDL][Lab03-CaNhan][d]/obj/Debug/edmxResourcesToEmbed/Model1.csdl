@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="QLSVEntities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="SP_SEL_USER" ReturnType="Collection(Int32)">
-      <Parameter Name="TENDN" Mode="In" Type="String" />
-      <Parameter Name="MATKHAU" Mode="In" Type="String" />
-    </FunctionImport>
-  </EntityContainer>
-</Schema>
