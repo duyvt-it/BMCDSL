@@ -145,7 +145,7 @@ GO
 
 ## 4. Viết màn hình quản lý đăng nhập hệ thống (sử dụng C#), cho phép nhập vào tên đăng nhập và mật khẩu (giả sử tên đăng nhập của sinh viên và nhân viên là duy nhất, nghĩa là tên đăng nhập của tất cả các sinh viên và tất cả nhân viên là khác nhau).
 
-![v](https://github.com/duyvt-it/BMCDSL/blob/master/%5BBMCSDL%5D%5BLab03%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BReport%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BCapture%5D/H%C3%ACnh%204.1%20M%C3%A0n%20h%C3%ACnh%20%C4%91%C4%83ng%20nh%E1%BA%ADp.png)
+![Hình 4.1](./%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BReport%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BCapture%5D/H%C3%ACnh%204.1%20M%C3%A0n%20h%C3%ACnh%20%C4%91%C4%83ng%20nh%E1%BA%ADp.png)
 ###### *Hình 4.1: Màn hình đăng nhập*
 </br>
 
