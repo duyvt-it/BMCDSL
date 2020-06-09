@@ -149,7 +149,7 @@ GO
 ###### *Hình 4.1: Màn hình đăng nhập*
 </br>
 
-![Hình 4.2](./%5BBMCSDL%5D%5BLabb03-CaNhan%5D%5BReport%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BCapture%5D/H%C3%ACnh%204.2%20%C4%90%C4%83ng%20nh%E1%BA%ADp%20th%C3%A0nh%20c%C3%B4ng%20v%E1%BB%9Bi%20NVA%20123456.png?raw=true)
+![Hình 4.2](./%5BBMCSDL%5D%5BLabb03-CaNhan%5D%5BReport%5D/%5BBMCSDL%5D%5BLab03-CaNhan%5D%5BCapture%5D/H%C3%ACnh%204.2%20%C4%90%C4%83ng%20nh%E1%BA%ADp%20th%C3%A0nh%20c%C3%B4ng%20v%E1%BB%9Bi%20NVA%20123456.png)
 ###### *Hình 4.2: Đăng nhập thành công với 'NVA/123456'*
 </br>
 
