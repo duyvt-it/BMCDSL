@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanLySinhVienDonGianModelStoreContainer" CdmEntityContainer="QuanLySinhVienDonGianEntities">
+    <FunctionImportMapping FunctionImportName="SP_SEL_USER" FunctionName="QuanLySinhVienDonGianModel.Store.SP_SEL_USER" />
+    <FunctionImportMapping FunctionImportName="SP_SEL_ENCRYPT_NHANVIEN" FunctionName="QuanLySinhVienDonGianModel.Store.SP_SEL_ENCRYPT_NHANVIEN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

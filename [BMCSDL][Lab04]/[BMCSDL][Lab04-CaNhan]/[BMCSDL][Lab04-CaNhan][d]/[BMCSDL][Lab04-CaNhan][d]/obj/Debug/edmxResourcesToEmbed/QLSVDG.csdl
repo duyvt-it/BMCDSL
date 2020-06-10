@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLySinhVienDonGianModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QuanLySinhVienDonGianEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_SEL_USER" ReturnType="Collection(Int32)">
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MD5PWD" Mode="In" Type="String" />
+      <Parameter Name="SHA1PWD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+  </EntityContainer>
+  <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
+    <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LUONG" Nullable="true" />
+  </ComplexType>
+</Schema>
