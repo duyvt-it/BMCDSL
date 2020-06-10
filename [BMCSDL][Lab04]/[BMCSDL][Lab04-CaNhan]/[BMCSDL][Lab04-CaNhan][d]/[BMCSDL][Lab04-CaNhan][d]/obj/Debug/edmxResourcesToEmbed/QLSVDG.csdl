@@ -8,6 +8,14 @@
     </FunctionImport>
     <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
     <EntitySet Name="NHANVIEN" EntityType="QuanLySinhVienDonGianModel.NHANVIEN" />
+    <FunctionImport Name="SP_INS_ENCRYPT_NHANVIEN">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="LUONG" Mode="In" Type="String" />
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MATKHAU" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
     <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />

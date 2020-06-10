@@ -134,3 +134,58 @@ GO
 
 EXEC dbo.SP_SEL_ENCRYPT_NHANVIEN
 GO 
+
+ALTER PROCEDURE [SP_SEL_USER]
+	@TENDN NVARCHAR(MAX),
+	@MD5PWD VARCHAR(MAX),
+	@SHA1PWD VARCHAR(MAX)
+AS
+BEGIN
+	DECLARE @ACCEPT_LOGIN INT
+	
+	IF EXISTS 
+	(
+		SELECT 
+			TENDN, 
+			MATKHAU 
+		FROM dbo.NHANVIEN 
+		WHERE 
+			TENDN = @TENDN AND 
+			(
+				(SELECT CAST('' AS XML).value('xs:hexBinary(sql:column("MATKHAU"))', 'varchar(max)')) = @MD5PWD OR 
+				(SELECT CAST('' AS XML).value('xs:hexBinary(sql:column("MATKHAU"))', 'varchar(max)')) = @SHA1PWD
+			)
+		UNION 
+		SELECT 
+			TENDN, 
+			MATKHAU 
+		FROM dbo.SINHVIEN 
+		WHERE 
+			TENDN = @TENDN AND 
+			(
+				(SELECT CAST('' AS XML).value('xs:hexBinary(sql:column("MATKHAU"))', 'varchar(max)')) = @MD5PWD OR 
+				(SELECT CAST('' AS XML).value('xs:hexBinary(sql:column("MATKHAU"))', 'varchar(max)')) = @SHA1PWD
+			)
+	)
+	BEGIN
+		SET @ACCEPT_LOGIN = 1
+	END
+	ELSE
+    BEGIN
+		SET @ACCEPT_LOGIN = 0
+	END
+    
+	SELECT @ACCEPT_LOGIN AS [RESULT]
+END
+GO 
+
+CREATE TABLE [tempNHANVIEN]
+(
+	[MANV] VARCHAR(20) NULL,
+	[HOTEN] NVARCHAR(100) NULL,
+	[EMAIL] VARCHAR(20) NULL,
+	[LUONG] VARCHAR(MAX) NULL,
+	[TENDN] NVARCHAR(100) NULL,
+	[MATKHAU] VARCHAR(MAX) NULL
+)
+GO 

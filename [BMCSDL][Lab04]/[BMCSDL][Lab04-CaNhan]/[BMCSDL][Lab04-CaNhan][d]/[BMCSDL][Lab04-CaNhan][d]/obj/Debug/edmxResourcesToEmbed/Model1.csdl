@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLySinhVienDonGianModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Binary" MaxLength="8000" FixedLength="false" />
+    <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MATKHAU" Type="Binary" MaxLength="8000" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="QuanLySinhVienDonGianEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" />
+    <FunctionImport Name="SP_INS_ENCRYPT_NHANVIEN">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="LUONG" Mode="In" Type="String" />
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MATKHAU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+    <FunctionImport Name="SP_SEL_USER" ReturnType="Collection(Int32)">
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MD5PWD" Mode="In" Type="String" />
+      <Parameter Name="SHA1PWD" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tempNHANVIEN" EntityType="QuanLySinhVienDonGianModel.tempNHANVIEN" />
+  </EntityContainer>
+  <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
+    <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LUONG" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tempNHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MATKHAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

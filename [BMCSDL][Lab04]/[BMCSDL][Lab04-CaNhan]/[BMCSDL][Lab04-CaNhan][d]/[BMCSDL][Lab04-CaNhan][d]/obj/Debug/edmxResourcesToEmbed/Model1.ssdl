@@ -11,6 +11,17 @@
     <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MATKHAU" Type="varbinary" MaxLength="8000" Nullable="false" />
   </EntityType>
+  <EntityType Name="tempNHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="HOTEN" Type="nvarchar" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+    <Property Name="LUONG" Type="varchar(max)" />
+    <Property Name="TENDN" Type="nvarchar" MaxLength="100" />
+    <Property Name="MATKHAU" Type="varchar(max)" />
+  </EntityType>
   <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MANV" Type="nvarchar" Mode="In" />
     <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
@@ -27,5 +38,6 @@
   </Function>
   <EntityContainer Name="QuanLySinhVienDonGianModelStoreContainer">
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tempNHANVIEN" EntityType="Self.tempNHANVIEN" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

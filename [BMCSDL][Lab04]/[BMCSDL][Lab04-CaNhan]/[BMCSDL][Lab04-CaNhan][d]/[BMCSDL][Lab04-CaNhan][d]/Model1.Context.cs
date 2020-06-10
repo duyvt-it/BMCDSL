@@ -28,6 +28,41 @@ namespace _BMCSDL__Lab04_CaNhan__d_
         }
     
         public virtual DbSet<NHANVIEN> NHANVIEN { get; set; }
+        public virtual DbSet<tempNHANVIEN> tempNHANVIEN { get; set; }
+    
+        public virtual int SP_INS_ENCRYPT_NHANVIEN(string mANV, string hOTEN, string eMAIL, string lUONG, string tENDN, string mATKHAU)
+        {
+            var mANVParameter = mANV != null ?
+                new ObjectParameter("MANV", mANV) :
+                new ObjectParameter("MANV", typeof(string));
+    
+            var hOTENParameter = hOTEN != null ?
+                new ObjectParameter("HOTEN", hOTEN) :
+                new ObjectParameter("HOTEN", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var lUONGParameter = lUONG != null ?
+                new ObjectParameter("LUONG", lUONG) :
+                new ObjectParameter("LUONG", typeof(string));
+    
+            var tENDNParameter = tENDN != null ?
+                new ObjectParameter("TENDN", tENDN) :
+                new ObjectParameter("TENDN", typeof(string));
+    
+            var mATKHAUParameter = mATKHAU != null ?
+                new ObjectParameter("MATKHAU", mATKHAU) :
+                new ObjectParameter("MATKHAU", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INS_ENCRYPT_NHANVIEN", mANVParameter, hOTENParameter, eMAILParameter, lUONGParameter, tENDNParameter, mATKHAUParameter);
+        }
+    
+        public virtual ObjectResult<SP_SEL_ENCRYPT_NHANVIEN_Result> SP_SEL_ENCRYPT_NHANVIEN()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SEL_ENCRYPT_NHANVIEN_Result>("SP_SEL_ENCRYPT_NHANVIEN");
+        }
     
         public virtual ObjectResult<Nullable<int>> SP_SEL_USER(string tENDN, string mD5PWD, string sHA1PWD)
         {
@@ -44,11 +79,6 @@ namespace _BMCSDL__Lab04_CaNhan__d_
                 new ObjectParameter("SHA1PWD", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_SEL_USER", tENDNParameter, mD5PWDParameter, sHA1PWDParameter);
-        }
-    
-        public virtual ObjectResult<SP_SEL_ENCRYPT_NHANVIEN_Result> SP_SEL_ENCRYPT_NHANVIEN()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SEL_ENCRYPT_NHANVIEN_Result>("SP_SEL_ENCRYPT_NHANVIEN");
         }
     }
 }

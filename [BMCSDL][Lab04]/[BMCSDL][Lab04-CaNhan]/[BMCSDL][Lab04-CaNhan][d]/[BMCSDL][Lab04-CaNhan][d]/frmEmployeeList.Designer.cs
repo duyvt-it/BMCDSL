@@ -219,8 +219,6 @@
             this.dtgvEmployee.Name = "dtgvEmployee";
             this.dtgvEmployee.Size = new System.Drawing.Size(985, 267);
             this.dtgvEmployee.TabIndex = 4;
-            this.dtgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellClick);
-            this.dtgvEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellContentClick);
             this.dtgvEmployee.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvEmployee_RowHeaderMouseClick);
             // 
             // groupBox3

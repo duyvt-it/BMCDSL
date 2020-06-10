@@ -1,7 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QuanLySinhVienDonGianModelStoreContainer" CdmEntityContainer="QuanLySinhVienDonGianEntities">
-    <FunctionImportMapping FunctionImportName="SP_SEL_USER" FunctionName="QuanLySinhVienDonGianModel.Store.SP_SEL_USER" />
+    <EntitySetMapping Name="NHANVIEN">
+      <EntityTypeMapping TypeName="QuanLySinhVienDonGianModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+          <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_NHANVIEN" FunctionName="QuanLySinhVienDonGianModel.Store.SP_INS_ENCRYPT_NHANVIEN" />
     <FunctionImportMapping FunctionImportName="SP_SEL_ENCRYPT_NHANVIEN" FunctionName="QuanLySinhVienDonGianModel.Store.SP_SEL_ENCRYPT_NHANVIEN">
       <ResultMapping>
         <ComplexTypeMapping TypeName="QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result">
@@ -12,9 +24,10 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="NHANVIEN">
-      <EntityTypeMapping TypeName="QuanLySinhVienDonGianModel.NHANVIEN">
-        <MappingFragment StoreEntitySet="NHANVIEN">
+    <FunctionImportMapping FunctionImportName="SP_SEL_USER" FunctionName="QuanLySinhVienDonGianModel.Store.SP_SEL_USER" />
+    <EntitySetMapping Name="tempNHANVIEN">
+      <EntityTypeMapping TypeName="QuanLySinhVienDonGianModel.tempNHANVIEN">
+        <MappingFragment StoreEntitySet="tempNHANVIEN">
           <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
           <ScalarProperty Name="TENDN" ColumnName="TENDN" />
           <ScalarProperty Name="LUONG" ColumnName="LUONG" />
@@ -24,6 +37,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_NHANVIEN" FunctionName="QuanLySinhVienDonGianModel.Store.SP_INS_ENCRYPT_NHANVIEN" />
   </EntityContainerMapping>
 </Mapping>
