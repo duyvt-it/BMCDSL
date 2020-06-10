@@ -7,6 +7,7 @@
       <Parameter Name="SHA1PWD" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QuanLySinhVienDonGianModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+    <EntitySet Name="NHANVIEN" EntityType="QuanLySinhVienDonGianModel.NHANVIEN" />
   </EntityContainer>
   <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
     <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
@@ -14,4 +15,15 @@
     <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="LUONG" Nullable="true" />
   </ComplexType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOTEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Binary" MaxLength="8000" FixedLength="false" />
+    <Property Name="TENDN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MATKHAU" Type="Binary" Nullable="false" MaxLength="8000" FixedLength="false" />
+  </EntityType>
 </Schema>

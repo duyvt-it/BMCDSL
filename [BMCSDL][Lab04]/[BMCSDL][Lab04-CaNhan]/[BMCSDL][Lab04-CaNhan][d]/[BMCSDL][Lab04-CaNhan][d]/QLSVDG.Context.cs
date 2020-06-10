@@ -27,6 +27,7 @@ namespace _BMCSDL__Lab04_CaNhan__d_
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<NHANVIEN> NHANVIEN { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_SEL_USER(string tENDN, string mD5PWD, string sHA1PWD)
         {

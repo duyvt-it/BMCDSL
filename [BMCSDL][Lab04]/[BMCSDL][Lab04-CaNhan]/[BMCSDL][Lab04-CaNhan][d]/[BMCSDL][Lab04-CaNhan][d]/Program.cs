@@ -6,6 +6,12 @@ using System.Windows.Forms;
 
 namespace _BMCSDL__Lab04_CaNhan__d_ {
     static class Program {
+        public static QuanLySinhVienDonGianEntities db = new QuanLySinhVienDonGianEntities();
+
+        public static string username;
+        public static string md5Pwd;
+        public static string sha1Pwd;
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

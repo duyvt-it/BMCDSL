@@ -4,7 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f9ab9c08e2ed406d9b76ea6fb4c1be5f" Name="Diagram1" />
+      <Diagram DiagramId="f9ab9c08e2ed406d9b76ea6fb4c1be5f" Name="Diagram1" >
+        <EntityTypeShape EntityType="QuanLySinhVienDonGianModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

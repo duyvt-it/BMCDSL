@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace _BMCSDL__Lab04_CaNhan__d_ {
     public partial class frmLogin : Form {
-        QuanLySinhVienDonGianEntities db = new QuanLySinhVienDonGianEntities();
+        QuanLySinhVienDonGianEntities db = Program.db;
 
         public frmLogin() {
             InitializeComponent();
@@ -52,14 +52,16 @@ namespace _BMCSDL__Lab04_CaNhan__d_ {
             //}
 
             string username = txbUser.Text;
-            string password = txbPwd.Text;
             string md5Pwd = getMd5Hash(txbPwd.Text);
             string sha1Pwd = getSha1Hash(txbPwd.Text);
 
-
             if (db.SP_SEL_USER(username, md5Pwd, sha1Pwd).SingleOrDefault().ToString() == "1") {
-                this.Hide();
+                Program.username = username;
+                Program.md5Pwd = md5Pwd;
+                Program.sha1Pwd = sha1Pwd;
+
                 frmEmployeeList frmEmployeeList = new frmEmployeeList();
+                this.Hide();
                 frmEmployeeList.ShowDialog();
                 this.Close();
             }
@@ -70,6 +72,7 @@ namespace _BMCSDL__Lab04_CaNhan__d_ {
                 }
             }
         }
+
         private void btnExit_Click(object sender, EventArgs e) {
             Application.Exit();
         }
