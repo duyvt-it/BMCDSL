@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+          <Property Name="LUONG" Type="varbinary" MaxLength="8000" />
+          <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MATKHAU" Type="varbinary" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="LUONG" Type="varchar(max)" Mode="In" />
+          <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MATKHAU" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_SEL_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_SEL_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TENDN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MD5PWD" Type="varchar(max)" Mode="In" />
+          <Parameter Name="SHA1PWD" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_UPD_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="LUONG" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="QLSVModelStoreContainer">
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LUONG" Type="Binary" MaxLength="8000" FixedLength="false" />
+          <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MATKHAU" Type="Binary" MaxLength="8000" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QLSVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" />
+          <FunctionImport Name="SP_INS_ENCRYPT_NHANVIEN">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="HOTEN" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="LUONG" Mode="In" Type="String" />
+            <Parameter Name="TENDN" Mode="In" Type="String" />
+            <Parameter Name="MATKHAU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QLSVModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+          <FunctionImport Name="SP_SEL_USER" ReturnType="Collection(Int32)">
+            <Parameter Name="TENDN" Mode="In" Type="String" />
+            <Parameter Name="MD5PWD" Mode="In" Type="String" />
+            <Parameter Name="SHA1PWD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPD_ENCRYPT_NHANVIEN">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="HOTEN" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="LUONG" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
+          <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="LUONG" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLSVModelStoreContainer" CdmEntityContainer="QLSVEntities">
+          <EntitySetMapping Name="NHANVIEN">
+            <EntityTypeMapping TypeName="QLSVModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_NHANVIEN" FunctionName="QLSVModel.Store.SP_INS_ENCRYPT_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_SEL_ENCRYPT_NHANVIEN" FunctionName="QLSVModel.Store.SP_SEL_ENCRYPT_NHANVIEN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSVModel.SP_SEL_ENCRYPT_NHANVIEN_Result">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEL_USER" FunctionName="QLSVModel.Store.SP_SEL_USER" />
+          <FunctionImportMapping FunctionImportName="SP_UPD_ENCRYPT_NHANVIEN" FunctionName="QLSVModel.Store.SP_UPD_ENCRYPT_NHANVIEN" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

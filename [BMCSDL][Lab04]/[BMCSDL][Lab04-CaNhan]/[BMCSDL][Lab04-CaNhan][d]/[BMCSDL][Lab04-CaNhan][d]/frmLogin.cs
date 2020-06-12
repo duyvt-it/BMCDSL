@@ -11,8 +11,6 @@ using System.Windows.Forms;
 
 namespace _BMCSDL__Lab04_CaNhan__d_ {
     public partial class frmLogin : Form {
-        QuanLySinhVienDonGianEntities db = Program.db;
-
         public frmLogin() {
             InitializeComponent();
         }
@@ -44,29 +42,36 @@ namespace _BMCSDL__Lab04_CaNhan__d_ {
         }
 
         private void btnLogin_Click(object sender, EventArgs e) {
-            //if (String.IsNullOrEmpty(txbUser.Text)) {
-            //    DialogResult warningUsername = MessageBox.Show("Tên đăng nhập trống!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-            //    if (warningUsername == System.Windows.Forms.DialogResult.Cancel) {
-            //        this.Close();
-            //    }
-            //}
+            if (String.IsNullOrEmpty(txbUser.Text)) {
+                DialogResult warningUsername = MessageBox.Show(
+                    "Tên đăng nhập trống!!", 
+                    "Cảnh báo", 
+                    MessageBoxButtons.RetryCancel, 
+                    MessageBoxIcon.Warning, 
+                    MessageBoxDefaultButton.Button1);
+                if (warningUsername == System.Windows.Forms.DialogResult.Cancel) {
+                    this.Close();
+                }
+            }
 
             string username = txbUser.Text;
             string md5Pwd = getMd5Hash(txbPwd.Text);
             string sha1Pwd = getSha1Hash(txbPwd.Text);
 
-            if (db.SP_SEL_USER(username, md5Pwd, sha1Pwd).SingleOrDefault().ToString() == "1") {
-                Program.username = username;
-                Program.md5Pwd = md5Pwd;
-                Program.sha1Pwd = sha1Pwd;
+            if (AccountDAO.db.SP_SEL_USER(username, md5Pwd, sha1Pwd).SingleOrDefault().ToString() == "1") {
 
-                frmEmployeeList frmEmployeeList = new frmEmployeeList();
+                frmEmployeeList frmEmployeeList = new frmEmployeeList(username);
                 this.Hide();
-                frmEmployeeList.ShowDialog();
-                this.Close();
+                frmEmployeeList.Show();
+                //this.Close();
             }
             else {
-                DialogResult loginFail = MessageBox.Show("Tên đăng nhập và mật khẩu không hợp lệ!!", username, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                DialogResult loginFail = MessageBox.Show(
+                    "Tên đăng nhập và mật khẩu không hợp lệ!!", 
+                    username, 
+                    MessageBoxButtons.RetryCancel, 
+                    MessageBoxIcon.Error, 
+                    MessageBoxDefaultButton.Button1);
                 if (loginFail == System.Windows.Forms.DialogResult.Cancel) {
                     this.Close();
                 }

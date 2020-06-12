@@ -28,6 +28,12 @@
       <Parameter Name="SHA1PWD" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tempNHANVIEN" EntityType="QuanLySinhVienDonGianModel.tempNHANVIEN" />
+    <FunctionImport Name="SP_UPD_ENCRYPT_NHANVIEN">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="LUONG" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
     <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />

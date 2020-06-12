@@ -37,5 +37,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_UPD_ENCRYPT_NHANVIEN" FunctionName="QuanLySinhVienDonGianModel.Store.SP_UPD_ENCRYPT_NHANVIEN" />
   </EntityContainerMapping>
 </Mapping>

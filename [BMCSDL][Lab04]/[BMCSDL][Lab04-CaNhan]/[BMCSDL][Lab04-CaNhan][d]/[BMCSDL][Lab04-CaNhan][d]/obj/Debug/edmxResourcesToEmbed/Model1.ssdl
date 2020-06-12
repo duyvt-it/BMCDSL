@@ -36,6 +36,12 @@
     <Parameter Name="MD5PWD" Type="varchar(max)" Mode="In" />
     <Parameter Name="SHA1PWD" Type="varchar(max)" Mode="In" />
   </Function>
+  <Function Name="SP_UPD_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+    <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+    <Parameter Name="LUONG" Type="varchar(max)" Mode="In" />
+  </Function>
   <EntityContainer Name="QuanLySinhVienDonGianModelStoreContainer">
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tempNHANVIEN" EntityType="Self.tempNHANVIEN" Schema="dbo" store:Type="Tables" />
